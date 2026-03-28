@@ -1,21 +1,25 @@
-package dev.java10x.CadastroDeNinjas;
+package dev.java10x.CadastroDeNinjas.Ninjas;
 
+import dev.java10x.CadastroDeNinjas.Missoes.MissoesModel;
 import jakarta.persistence.*;
 
-// @Entity transforma a classe em uma tabela no banco de dados.
+import java.util.List;
+
 @Entity
-// @Table define o nome da tabela.
-@Table(name = "tb_cadastro_ninjas")
+@Table(name = "tb_cadastro")
 public class NinjaModel {
 
-    // @Id define que o atributo seguinte será o Id da tabela.
-    // @GenerateValue define como/a estratégia de incremento do Id.
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    Long id;
-    String nome;
-    String email;
-    int idade;
+    private Long id;
+    private String nome;
+    private String email;
+    private int idade;
+
+
+    @ManyToOne
+    @JoinColumn(name = "missoes_id")
+    private List<MissoesModel> missoes;
 
     public NinjaModel(String nome, String email, int idade) {
         this.nome = nome;
