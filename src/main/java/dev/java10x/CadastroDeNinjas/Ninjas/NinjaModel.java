@@ -10,7 +10,7 @@ import java.util.List;
 
 @Entity
 @Table(name = "tb_cadastro")
-@NoArgsConstructor ArgsConstructor ArgsConstructor
+@NoArgsConstructor
 @AllArgsConstructor
 @Data
 public class NinjaModel {
@@ -24,9 +24,9 @@ public class NinjaModel {
     private String email;
     private int idade;
 
-    //
+    // Vários ninjas para uma missão
     @ManyToOne
-    @JoinColumn(name = "missoes_id")
+    @JoinColumn(name = "missoes_id") // Chave estrangeira
     private MissoesModel missoes;
 }
 
